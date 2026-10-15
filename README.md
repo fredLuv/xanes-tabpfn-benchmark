@@ -4,6 +4,25 @@
 
 [**Read the notebook**](notebooks/01_benchmark_results.ipynb) · [**LinkedIn article**](https://www.linkedin.com/pulse/can-transformer-beat-random-forests-x-ray-data-feiyu-lu-xekec/) · [**Reproduce the analysis**](docs/REPRODUCIBILITY.md)
 
+## Run it yourself
+
+**The Python code is in [`xanes_benchmark/`](xanes_benchmark/); JSON files record frozen settings and evidence.** The [step-by-step guide](docs/REPRODUCIBILITY.md) covers both regenerating the analysis and rerunning the actual models.
+
+```sh
+git clone https://github.com/fredLuv/xanes-tabpfn-benchmark.git
+cd xanes-tabpfn-benchmark
+python3.11 -m venv .venv-report
+.venv-report/bin/pip install -r environments/report.txt
+.venv-report/bin/python -m xanes_benchmark verify
+.venv-report/bin/python scripts/execute_notebook.py
+```
+
+This rebuilds every chart from individual saved predictions and executes the notebook. No weights or raw-data download are needed for this route.
+
+**To regenerate predictions:** follow [data → RF → TabPFN → importance](docs/REPRODUCIBILITY.md#route-b--reproduce-model-predictions-from-the-authors-inputs). The runnable [full-suite script](scripts/reproduce.py) covers all eight elements. [Model and importance code](xanes_benchmark/inference.py) uses the exact archived splits and donor orders; [figure code](xanes_benchmark/figures.py) turns predictions into the four charts.
+
+Original archive → verified arrays → training context / RF fit → held-out predictions + validation permutations → metrics → figures → notebook.
+
 ## Findings
 
 On the authors' archived test split, using matched model seeds:
@@ -32,22 +51,15 @@ We shuffle one contiguous energy region across validation spectra and measure th
 |---|---|
 | [Executed notebook](notebooks/01_benchmark_results.ipynb) | Performance, all eight importance maps, conditional stability and regression parity |
 | [Methods and limitations](docs/METHODS.md) | Inputs, splits, model settings, interpretation and minimum follow-up |
-| [Reproducibility](docs/REPRODUCIBILITY.md) | Offline checks, environments, optional model reruns and provenance |
+| [Reproducibility](docs/REPRODUCIBILITY.md) | Copy-and-run instructions from the archive through inference, importance and figures |
+| [Runnable model code](xanes_benchmark/inference.py) | RF/TabPFN construction and actual regional permutation inference |
+| [Full-suite runner](scripts/reproduce.py) | Sequential test and importance reruns with recorded failures |
+| [Figure builders](xanes_benchmark/figures.py) | Reconstruct all four charts from individual predictions |
 | [Results](results/) | Individual predictions, run records, importance predictions and checksums |
 | [Figures](figures/) | PNG and vector SVG versions of four figures |
 | [Experiment configuration](configs/benchmark.json) | Input hashes, frozen settings and checkpoint revision |
 
-Python 3.11 is recommended. To verify the saved evidence without weights or raw spectra:
-
-```sh
-python3.11 -m venv .venv-report
-.venv-report/bin/pip install -r environments/report.txt
-.venv-report/bin/python -m xanes_benchmark verify
-.venv-report/bin/python -m xanes_benchmark report
-.venv-report/bin/python -m xanes_benchmark.stability
-```
-
-The report notebook reads bundled predictions and runs without network access. Full inference is optional and requires the original archive and separately obtained model weights. The recorded experiments ran on an M4 Mac with 16 GB memory, four CPU workers and Apple MPS where recorded, with 10 GB / 30-minute limits per job. See the reproducibility guide before running a case.
+The recorded experiments ran on an M4 Mac with 16 GB memory. Full inference requires the authors’ archive and separately obtained TabPFN weights; some recorded cases require Apple MPS. See [requirements and rerun commands](docs/REPRODUCIBILITY.md). Model reruns remain separate from the released evidence and include explicit agreement checks.
 
 ## Sources and attribution
 

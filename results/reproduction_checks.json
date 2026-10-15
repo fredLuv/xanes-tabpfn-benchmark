@@ -1,0 +1,108 @@
+{
+  "checked_on": "2026-10-15",
+  "scope": "Public adapter verification; not new research experiments. RF installed into a fresh environment; TabPFN used the pinned existing environment and checkpoint.",
+  "checks": [
+    {
+      "case": "Cr_coord_rf_42",
+      "comparison": {
+        "element": "Cr",
+        "task": "coord",
+        "model": "rf",
+        "seed": 42,
+        "predictions_exact": true,
+        "max_absolute_prediction_difference": 0.0,
+        "rerun_metrics": {
+          "accuracy": 0.8595744680851064,
+          "macro_f1": 0.8373946004486733,
+          "f1_cn4": 0.946236559139785,
+          "f1_cn5": 0.6666666666666666,
+          "f1_cn6": 0.8992805755395683
+        },
+        "released_metrics": {
+          "accuracy": 0.8595744680851064,
+          "macro_f1": 0.8373946004486733,
+          "f1_cn4": 0.946236559139785,
+          "f1_cn5": 0.6666666666666666,
+          "f1_cn6": 0.8992805755395683
+        }
+      },
+      "resources": {
+        "wall_seconds": 49.970378207974136,
+        "peak_rss_plus_mps_bytes": 144211968,
+        "limit_reason": null,
+        "returncode": 0
+      },
+      "packages": {
+        "numpy": "1.26.4",
+        "scipy": "1.11.4",
+        "scikit-learn": "1.3.2"
+      }
+    },
+    {
+      "case": "importance_Cr_rf_42",
+      "comparison": {
+        "element": "Cr",
+        "model": "rf",
+        "shuffles": 3,
+        "baseline_exact": true,
+        "all_shuffled_predictions_exact": true,
+        "maximum_importance_difference": 0.0
+      },
+      "resources": {
+        "wall_seconds": 3.5876825830200687,
+        "peak_rss_plus_mps_bytes": 151830528,
+        "limit_reason": null,
+        "returncode": 0
+      },
+      "packages": {
+        "numpy": "1.26.4",
+        "scipy": "1.11.4",
+        "scikit-learn": "1.3.2"
+      }
+    },
+    {
+      "case": "Cr_coord_tabpfn_42",
+      "comparison": {
+        "element": "Cr",
+        "task": "coord",
+        "model": "tabpfn",
+        "seed": 42,
+        "predictions_exact": true,
+        "max_absolute_prediction_difference": 0.0,
+        "rerun_metrics": {
+          "accuracy": 0.8936170212765957,
+          "macro_f1": 0.8815771726930032,
+          "f1_cn4": 0.967741935483871,
+          "f1_cn5": 0.7572815533980582,
+          "f1_cn6": 0.9197080291970803
+        },
+        "released_metrics": {
+          "accuracy": 0.8936170212765957,
+          "macro_f1": 0.8815771726930032,
+          "f1_cn4": 0.967741935483871,
+          "f1_cn5": 0.7572815533980582,
+          "f1_cn6": 0.9197080291970803
+        }
+      },
+      "resources": {
+        "wall_seconds": 66.81892370898277,
+        "peak_rss_plus_mps_bytes": 7968489472,
+        "limit_reason": null,
+        "returncode": 0
+      },
+      "packages": {
+        "numpy": "1.26.4",
+        "scipy": "1.17.1",
+        "scikit-learn": "1.7.2",
+        "tabpfn": "9.1.0",
+        "torch": "2.14.1"
+      }
+    }
+  ],
+  "code_sha256": {
+    "xanes_benchmark/__main__.py": "61f7bbcb5c19f5d80a796c9f19af464e4491297cc132a3b5cab00b58a72784ac",
+    "xanes_benchmark/inference.py": "9246d6a4dfedd4cd7b1557df88406a3cb733267846d98dba223e7d7ea81bbcb3",
+    "xanes_benchmark/figures.py": "8c3369da2766702fb118fb93f8c8492d4d532742fc8ac7ccad8c34439f529f17"
+  },
+  "limitations": "Full 144-run matrix and complete TabPFN importance inference were not repeated for this code release; original saved predictions remain the published evidence."
+}

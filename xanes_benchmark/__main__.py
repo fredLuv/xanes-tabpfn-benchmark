@@ -1,4 +1,4 @@
-"""Inspect saved results or rerun one frozen test case; no automatic experiment queue."""
+"""Reproduce the published benchmark: inputs, model predictions, importance and figures."""
 import os
 for name in ['OMP_NUM_THREADS', 'OPENBLAS_NUM_THREADS', 'MKL_NUM_THREADS', 'VECLIB_MAXIMUM_THREADS']:
     os.environ[name] = '4'
@@ -49,57 +49,26 @@ def prepare(args):
 
 
 def worker(args):
-    import importlib.metadata
     import numpy as np
-    config = json.loads(CONFIG.read_text())
-    case = next(c for c in config['cases'] if c['element'] == args.element and c['task'] == args.task)
-    directory = Path(args.data_dir); data = {}
-    for key, a in case['arrays'].items():
-        f = directory / a['filename']
-        if sha256(f) != a['sha256']: raise ValueError(f'Input checksum mismatch: {a["filename"]}')
-        data[key] = np.load(f, allow_pickle=False)
-        if list(data[key].shape) != a['shape'] or not np.isfinite(data[key]).all(): raise ValueError(key)
-    version = importlib.metadata.version
-    expected = {'rf': '1.3.2', 'tabpfn': '1.7.2'}[args.model]
-    if version('scikit-learn') != expected: raise RuntimeError(f'Use pinned {args.model} environment: sklearn {expected}')
-    if args.model == 'rf':
-        from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
-        cls = RandomForestClassifier if args.task == 'coord' else RandomForestRegressor
-        model = cls(n_estimators=300, max_depth=35, max_features=8, min_samples_leaf=1,
-                    min_samples_split=2, n_jobs=4, random_state=args.seed)
-    else:
-        import torch
-        from tabpfn import TabPFNClassifier, TabPFNRegressor
-        from tabpfn.constants import ModelVersion
-        if version('tabpfn') != '9.1.0': raise RuntimeError('Use pinned TabPFN 9.1.0')
-        if not args.checkpoint: raise ValueError('Supply --checkpoint; weights are not bundled or downloaded automatically.')
-        if sha256(args.checkpoint) != config['checkpoint']['sha256']: raise ValueError('Checkpoint checksum mismatch')
-        params = case['tabpfn_params'].copy()
-        if params['device'] == 'mps' and not torch.backends.mps.is_available():
-            raise RuntimeError('Frozen case uses Apple MPS; backend substitutions require a separately labeled experiment.')
-        torch.set_num_threads(4)
-        # A conservative RSS + MPS-driver accounting may double count shared memory.
-        import threading
-        def sample_mps():
-            while True:
-                b = torch.mps.driver_allocated_memory() if torch.backends.mps.is_available() else 0
-                Path(args.output, 'mps_bytes.txt').write_text(str(b))
-                time.sleep(.2)
-        threading.Thread(target=sample_mps, daemon=True).start()
-        cls = TabPFNClassifier if args.task == 'coord' else TabPFNRegressor
-        model = cls.create_default_for_version(ModelVersion.V3_5, random_state=args.seed,
-                  model_path=args.checkpoint, n_preprocessing_jobs=4, **params)
+    from .inference import load_inputs, build_model, package_versions, importance_worker
+    config, case, data = load_inputs(args)
+    model = build_model(args, case, config)
+    if args.kind == 'importance':
+        return importance_worker(args, model, data)
     start = time.monotonic()
     model.fit(data['train_x'], data['train_y'])
     fit_seconds = time.monotonic() - start
     pred = np.asarray(model.predict(data['test_x'])).reshape(-1)
     if pred.shape != data['test_y'].shape or not np.isfinite(pred).all(): raise ValueError('Invalid predictions')
     out = Path(args.output)
+    from .inference import score
+    measured = score(data['test_y'], pred, args.task)
     np.savez_compressed(out / 'predictions.npz', y=data['test_y'], predictions=pred)
     (out / 'result.json').write_text(json.dumps(dict(status='success', model=args.model,
-        element=args.element, task=args.task, seed=args.seed, fit_seconds=fit_seconds,
+        element=args.element, task=args.task, seed=args.seed, metrics=measured, fit_seconds=fit_seconds,
         elapsed_seconds=time.monotonic()-start, config_sha256=sha256(CONFIG),
-        runner_sha256=sha256(__file__), packages={p:version(p) for p in ['numpy','scipy','scikit-learn']},
+        runner_sha256=sha256(__file__), inference_sha256=sha256(ROOT/'xanes_benchmark/inference.py'),
+        predictions_sha256=sha256(out/'predictions.npz'), packages=package_versions(args.model),
         n_estimators=getattr(model,'n_estimators_',getattr(model,'n_estimators',None))), indent=2)+'\n')
 
 
@@ -107,25 +76,30 @@ def run(args):
     import fcntl
     import subprocess
     import psutil
-    folder = ROOT / 'runs'; folder.mkdir(exist_ok=True)
-    with open(folder / '.lock', 'w') as lock:
+    folder = Path(args.runs_dir).resolve(); folder.mkdir(parents=True, exist_ok=True)
+    (ROOT/'runs').mkdir(exist_ok=True)
+    with open(ROOT/'runs/.lock', 'w') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        out = folder / f'{args.element}_{args.task}_{args.model}_{args.seed}'
-        if out.exists(): raise RuntimeError('Output already exists. Preserve it; choose a separate checkout for reruns.')
-        out.mkdir()
+        out = folder / (f'importance_{args.element}_{args.model}_42' if args.kind == 'importance' else f'{args.element}_{args.task}_{args.model}_{args.seed}')
+        if out.exists() and not (args.kind == 'importance' and args.resume):
+            raise RuntimeError('Output already exists. Importance can resume with --resume; preserve test reruns separately.')
+        out.mkdir(exist_ok=True)
         cmd = [sys.executable, '-m', 'xanes_benchmark', '_worker', '--element', args.element,
                '--task', args.task, '--model', args.model, '--seed', str(args.seed),
-               '--data-dir', args.data_dir, '--output', str(out)]
+               '--data-dir', args.data_dir, '--output', str(out), '--kind', args.kind]
         if args.checkpoint: cmd += ['--checkpoint', args.checkpoint]
+        if args.resume: cmd += ['--resume']
         start = time.monotonic(); peak = 0; reason = None
-        with open(out / 'execution.log', 'w') as log:
-            process = subprocess.Popen(cmd, stdout=log, stderr=log, cwd=ROOT, start_new_session=True)
+        with open(out / 'execution.log', 'a') as log:
+            env = os.environ.copy()
+            env.update(TABPFN_NO_BROWSER='1', TABPFN_MPS_MEMORY_FRACTION='0.6', DO_NOT_TRACK='1', HF_HUB_DISABLE_TELEMETRY='1')
+            process = subprocess.Popen(cmd, stdout=log, stderr=log, cwd=ROOT, env=env, start_new_session=True)
             try:
                 while process.poll() is None:
                     try:
                         parent = psutil.Process(process.pid)
                         rss = sum(p.memory_info().rss for p in [parent]+parent.children(recursive=True) if p.is_running())
-                    except psutil.NoSuchProcess: rss = 0
+                    except (psutil.NoSuchProcess, psutil.AccessDenied): rss = 0
                     try: gpu = int((out / 'mps_bytes.txt').read_text())
                     except (FileNotFoundError, ValueError): gpu = 0
                     peak = max(peak, rss + gpu)
@@ -141,7 +115,7 @@ def run(args):
                     os.killpg(process.pid, signal.SIGKILL); process.wait()
         (out / 'resources.json').write_text(json.dumps(dict(wall_seconds=time.monotonic()-start,
             peak_rss_plus_mps_bytes=peak, limit_reason=reason, returncode=process.returncode), indent=2)+'\n')
-        print(out.relative_to(ROOT), 'complete' if process.returncode == 0 else f'failed/limited ({reason}); inspect execution.log')
+        print(out, 'complete' if process.returncode == 0 else f'failed/limited ({reason}); inspect execution.log')
         if process.returncode: raise SystemExit(1)
 
 
@@ -149,19 +123,35 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     sub = p.add_subparsers(dest='command', required=True)
     for name in ['verify','report']: sub.add_parser(name)
+    f = sub.add_parser('figures'); f.add_argument('--output-dir', default=str(ROOT/'output/figures'))
+    c = sub.add_parser('compare'); c.add_argument('run_dir')
     d = sub.add_parser('prepare'); d.add_argument('--archive'); d.add_argument('--data-dir',default=str(ROOT/'data'))
-    for name in ['run','_worker']:
+    for name in ['run','importance','_worker']:
         q = sub.add_parser(name)
         q.add_argument('--model',choices=['rf','tabpfn'],required=True)
         q.add_argument('--element',choices=['Ti','V','Cr','Mn','Fe','Co','Ni','Cu'],required=True)
-        q.add_argument('--task',choices=['coord','md','bader'],required=True)
+        q.add_argument('--task',choices=['coord','md','bader'],default='coord',required=name=='run')
         q.add_argument('--seed',type=int,choices=[42,43,44],default=42)
         q.add_argument('--data-dir',default=str(ROOT/'data')); q.add_argument('--checkpoint')
-        if name=='_worker':q.add_argument('--output',required=True)
+        q.add_argument('--runs-dir',default=str(ROOT/'runs'))
+        q.add_argument('--resume', action='store_true', help='Resume verified importance checkpoints only')
+        if name=='_worker':
+            q.add_argument('--output',required=True)
+            q.add_argument('--kind',choices=['test','importance'],required=True)
+        else: q.set_defaults(kind='importance' if name=='importance' else 'test')
     args=p.parse_args()
     if args.command=='prepare':prepare(args)
-    elif args.command=='run':run(args)
+    elif args.command in ['run','importance']:
+        if args.kind == 'importance' and (args.task != 'coord' or args.seed != 42):
+            p.error('Released importance uses coordination, model seed 42 only')
+        run(args)
     elif args.command=='_worker':worker(args)
+    elif args.command=='figures':
+        from .figures import build
+        print(build(Path(args.output_dir)))
+    elif args.command=='compare':
+        from .inference import compare
+        print(json.dumps(compare(Path(args.run_dir)), indent=2))
     else:
         from .analysis import verify, paired_summary
         print(verify())

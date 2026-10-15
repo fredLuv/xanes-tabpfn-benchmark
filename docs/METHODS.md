@@ -32,7 +32,7 @@ Top-window retention is descriptive sensitivity to evaluated rows, **not a proba
 
 ## Minimum importance follow-up
 
-Recommended, **not yet executed**: complete five independently drawn donor permutations for each of the ten windows, for each model and all eight elements, holding the fitted model and evaluation rows fixed. Use paired donor orders across models, reuse verified existing runs, and report all repetitions, mean, SD, and ranking changes. Freeze new donor seeds before inference. Five is a practical initial check, not a universal statistical threshold. If rankings remain ambiguous, retain that uncertainty instead of choosing a favorable run or asserting a unique highest window.
+Five independently drawn donor permutations per window would assess sensitivity to the chosen donor order. This is an optional follow-up, not part of the released evidence. The released comparison retains the paired original three shuffles for Cr and one for the other seven elements. Exact rankings remain preliminary. Additional runs were stopped to prioritize reproducibility; partial follow-up results do not replace the paired comparison.
 
 Repeating donor shuffles addresses permutation variability only. Robustness to model seed, window size, alternative perturbations and new materials are separate questions. Repeated shuffles would strengthen the current importance claims but would not cure split leakage or establish physical mechanisms.
 
