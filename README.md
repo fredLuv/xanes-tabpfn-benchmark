@@ -65,6 +65,10 @@ We shuffle one contiguous energy region across validation spectra and measure th
 
 The recorded experiments ran on an M4 Mac with 16 GB memory. Full inference requires the authors’ archive and separately obtained TabPFN weights; some recorded cases require Apple MPS. See [requirements and rerun commands](docs/REPRODUCIBILITY.md). Model reruns remain separate from the released evidence and include explicit agreement checks.
 
+## Planned follow-up
+
+[**Next study: biological force curves and limited expert labels**](docs/NEXT_STUDY_AFM.md) records the scientific rationale, data and novelty checks, controlled comparison, and proposed cloud execution plan. This is a proposal; AFM experiments have not started. The XANES results above are unchanged.
+
 ## Sources and attribution
 
 - [Torrisi et al. (2020), original XANES study](https://www.nature.com/articles/s41524-020-00376-6)
