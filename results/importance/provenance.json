@@ -1,0 +1,310 @@
+[
+  {
+    "element": "Ti",
+    "model": "tabpfn",
+    "file": "results/importance/Ti_tabpfn.npz",
+    "original_record_sha256": "735a9c01cc25f1bc53729368cde40f2f68976618496ba30aa0113ce7c3760cf5",
+    "original_predictions_sha256": "22376df3667280f25ab0dddc02a7aa46b725c806b69342b2329f8f7cbaf0d73a",
+    "params": {
+      "device": "cpu",
+      "memory_saving_mode": true,
+      "inference_config": {
+        "MAX_CPU_SAMPLES": 100000
+      },
+      "runtime_options": {
+        "max_batched_estimator_rows": 0
+      }
+    },
+    "explanation": {
+      "window_points": 10,
+      "repeats": 1,
+      "permutation_seed": 20261008,
+      "probes": [
+        "permutation"
+      ],
+      "source_result_sha256": "d768e8db6894772216b9c741a4fecd7d3ca263f561c43912c6506c01e51b9e54"
+    }
+  },
+  {
+    "element": "Ti",
+    "model": "rf",
+    "file": "results/importance/Ti_rf.npz",
+    "original_record_sha256": "f77bbbfc80ab546ad20139df90114f0b6e27038fb6a97acded8cfde4bd439b2a",
+    "original_predictions_sha256": "5156c9fad82baad3fe2dab5db8fdc9f7fdeed304c22c3b44fb61a1c09f7df886",
+    "params": {},
+    "explanation": {
+      "window_points": 10,
+      "repeats": 3,
+      "permutation_seed": 20261008,
+      "source_result_sha256": "ef08dd83c78719ca78acc720bb16c8eab3661d416a2a0e7148f7a2282075d5cd"
+    }
+  },
+  {
+    "element": "V",
+    "model": "tabpfn",
+    "file": "results/importance/V_tabpfn.npz",
+    "original_record_sha256": "2596f83dea7ebb0314180d92e619f813a25276dc2150b0dc35cd352453dfc1f0",
+    "original_predictions_sha256": "316c37219b29ad8a7710774ffdd29a4936d00e5c546953091c74398a4f9bdeb6",
+    "params": {
+      "device": "cpu",
+      "memory_saving_mode": true,
+      "inference_config": {
+        "MAX_CPU_SAMPLES": 100000
+      },
+      "runtime_options": {
+        "max_batched_estimator_rows": 0
+      }
+    },
+    "explanation": {
+      "window_points": 10,
+      "repeats": 1,
+      "permutation_seed": 20261008,
+      "probes": [
+        "permutation"
+      ],
+      "source_result_sha256": "43765b0217ce4e9cf13cab689da033fe7769c2d750939aafe5073218d1b9082f"
+    }
+  },
+  {
+    "element": "V",
+    "model": "rf",
+    "file": "results/importance/V_rf.npz",
+    "original_record_sha256": "a383f87e6d88f2bf23bdfc1565147014d0b05c5ae1d37847434b7983f14905f6",
+    "original_predictions_sha256": "74c9f2d122f54485795b7bda87e61ae2e5fd622e2f599430dd8f930af072f611",
+    "params": {},
+    "explanation": {
+      "window_points": 10,
+      "repeats": 3,
+      "permutation_seed": 20261008,
+      "source_result_sha256": "bf02922c429086acbfd09ddc7e8aa95b0475399dcfd257584aeaa5ddbf5a1db9"
+    }
+  },
+  {
+    "element": "Mn",
+    "model": "tabpfn",
+    "file": "results/importance/Mn_tabpfn.npz",
+    "original_record_sha256": "72049b4e8d7c854ba9d0343b1c379a0d9bf173a458ba2dc351220a1f8105218f",
+    "original_predictions_sha256": "4c0ad938db85a88e8c4fd6bf17cbaf4129881f6497e7e971eecc4775cac377f9",
+    "params": {
+      "device": "cpu",
+      "memory_saving_mode": true,
+      "inference_config": {
+        "MAX_CPU_SAMPLES": 100000
+      },
+      "runtime_options": {
+        "max_batched_estimator_rows": 0
+      }
+    },
+    "explanation": {
+      "window_points": 10,
+      "repeats": 1,
+      "permutation_seed": 20261008,
+      "probes": [
+        "permutation"
+      ],
+      "source_result_sha256": "a4d701778c08e0421d4aec86ee902f47d89e7098de34a9d886a1c0942a5d3944"
+    }
+  },
+  {
+    "element": "Mn",
+    "model": "rf",
+    "file": "results/importance/Mn_rf.npz",
+    "original_record_sha256": "7bf4116e4d9e9f365501d90b08835de478689d7992ca4c283e7358a63606bce6",
+    "original_predictions_sha256": "ebe61f9df368812f16170759f3dfaef65f787654cbed699287efbc771fc5687b",
+    "params": {},
+    "explanation": {
+      "window_points": 10,
+      "repeats": 3,
+      "permutation_seed": 20261008,
+      "source_result_sha256": "94460db727e406445983d8c941b3338d559711ffa2d61b8da559b123ef5c4a19"
+    }
+  },
+  {
+    "element": "Fe",
+    "model": "tabpfn",
+    "file": "results/importance/Fe_tabpfn.npz",
+    "original_record_sha256": "0afe49b40e761ac03492ba1a10677348f90cf7dae70fecbec8cb4560262a9429",
+    "original_predictions_sha256": "68977cc8735b77324906eb2281bfd4f58dd35b4e893f4bd66904584febc0a340",
+    "params": {
+      "device": "cpu",
+      "memory_saving_mode": true,
+      "inference_config": {
+        "MAX_CPU_SAMPLES": 100000
+      },
+      "runtime_options": {
+        "max_batched_estimator_rows": 0
+      }
+    },
+    "explanation": {
+      "window_points": 10,
+      "repeats": 1,
+      "permutation_seed": 20261008,
+      "probes": [
+        "permutation"
+      ],
+      "source_result_sha256": "a2040f3dee61ba487e6100bc7f75c48550989414ed4cf61c795b7d715e980614"
+    }
+  },
+  {
+    "element": "Fe",
+    "model": "rf",
+    "file": "results/importance/Fe_rf.npz",
+    "original_record_sha256": "24a371c5d392dd96ff5a13dc2092f331fe829a75c515db552fe6fd2cbbcf6aa3",
+    "original_predictions_sha256": "5c287d15a086c161a7740f65d0348aac0c7b349b7c3a3330dfb6e10f17fb3983",
+    "params": {},
+    "explanation": {
+      "window_points": 10,
+      "repeats": 3,
+      "permutation_seed": 20261008,
+      "source_result_sha256": "6d19c8979153bd508782306b21f715cd99b914932215894e58a5651aba84ebc9"
+    }
+  },
+  {
+    "element": "Co",
+    "model": "tabpfn",
+    "file": "results/importance/Co_tabpfn.npz",
+    "original_record_sha256": "7262d85ac87d9802ad4bf1fdb5579769c44ead61c49b284926e7883e54d1389f",
+    "original_predictions_sha256": "dc297de1fe1c2cf4cabd7126b0ebb76f5e4457579951accb5f28f8a92535a611",
+    "params": {
+      "device": "cpu",
+      "memory_saving_mode": true,
+      "inference_config": {
+        "MAX_CPU_SAMPLES": 100000
+      },
+      "runtime_options": {
+        "max_batched_estimator_rows": 0
+      }
+    },
+    "explanation": {
+      "window_points": 10,
+      "repeats": 1,
+      "permutation_seed": 20261008,
+      "probes": [
+        "permutation"
+      ],
+      "source_result_sha256": "9d52fb3636b442d64fd1b4881743197453d93383a7c28943a7149ec03ecdb2af"
+    }
+  },
+  {
+    "element": "Co",
+    "model": "rf",
+    "file": "results/importance/Co_rf.npz",
+    "original_record_sha256": "5f3c52d0522216b6c31ca3b49a0dd59e6cb1e868e6ffbdcb81e05b83ee49f14d",
+    "original_predictions_sha256": "624c19bdf397fb800fa9ed71e21c958d278f3d29b573fb4ed608298eaa1128c8",
+    "params": {},
+    "explanation": {
+      "window_points": 10,
+      "repeats": 3,
+      "permutation_seed": 20261008,
+      "source_result_sha256": "1242f3ddbfa58608a5a223d3407fe16db03aa435c0501620ebd7a3192f8d4bbb"
+    }
+  },
+  {
+    "element": "Ni",
+    "model": "tabpfn",
+    "file": "results/importance/Ni_tabpfn.npz",
+    "original_record_sha256": "ada6f46cf8482b05d47d3ebab52f30238555e0ee35696f61babbe889f7c1f291",
+    "original_predictions_sha256": "7b44f6f1c9676db3fb1f60290c32beb95a9d5d64a077370980a5a888c84e6e07",
+    "params": {
+      "device": "cpu",
+      "memory_saving_mode": true,
+      "inference_config": {
+        "MAX_CPU_SAMPLES": 100000
+      },
+      "runtime_options": {
+        "max_batched_estimator_rows": 0
+      }
+    },
+    "explanation": {
+      "window_points": 10,
+      "repeats": 1,
+      "permutation_seed": 20261008,
+      "probes": [
+        "permutation"
+      ],
+      "source_result_sha256": "f51ed281741b600f78396204ad74178c56a6447f4cc7647ee3b706554428a884"
+    }
+  },
+  {
+    "element": "Ni",
+    "model": "rf",
+    "file": "results/importance/Ni_rf.npz",
+    "original_record_sha256": "c7eb73d431d5947c8302999a46560cb8192b04a34aa6f21288ab263e0bc1777e",
+    "original_predictions_sha256": "ff56ff44c73e0854e462f787b87f67923989fa1db294e235c892472433f49bad",
+    "params": {},
+    "explanation": {
+      "window_points": 10,
+      "repeats": 3,
+      "permutation_seed": 20261008,
+      "source_result_sha256": "ac944eb4f06f00de97c2cc356d829bb304558ab9626b0f2d0046848766d9f3b1"
+    }
+  },
+  {
+    "element": "Cu",
+    "model": "tabpfn",
+    "file": "results/importance/Cu_tabpfn.npz",
+    "original_record_sha256": "3385cc5daa5e517f6ccc98e5b1bbef73d4913e04b19bd4e4eb126f106530594b",
+    "original_predictions_sha256": "43bd1b6ff22a3bfaacd451f8ce4c05a628a1e2abb7d6be1950ce229aa01a7a9c",
+    "params": {
+      "device": "cpu",
+      "memory_saving_mode": true,
+      "inference_config": {
+        "MAX_CPU_SAMPLES": 100000
+      },
+      "runtime_options": {
+        "max_batched_estimator_rows": 0
+      }
+    },
+    "explanation": {
+      "window_points": 10,
+      "repeats": 1,
+      "permutation_seed": 20261008,
+      "probes": [
+        "permutation"
+      ],
+      "source_result_sha256": "af55496f6955fa1f73be0b43323446b88b9a1819752ca4c7797d258e0ed142bd"
+    }
+  },
+  {
+    "element": "Cu",
+    "model": "rf",
+    "file": "results/importance/Cu_rf.npz",
+    "original_record_sha256": "aced822a24af217482fe10afd8aff3769f8719141631bf1c5ed9af9d2a58857b",
+    "original_predictions_sha256": "6d3a6f8eeb179ff4d5942e48ce9db02234dd84529c77e1e2fc227cf99f92245d",
+    "params": {},
+    "explanation": {
+      "window_points": 10,
+      "repeats": 3,
+      "permutation_seed": 20261008,
+      "source_result_sha256": "64f734e4139c5fb558f611368addd9dece50b52fd7c1d3b5213f595f37f6022b"
+    }
+  },
+  {
+    "element": "Cr",
+    "model": "rf",
+    "file": "results/importance/Cr_rf.npz",
+    "original_record_sha256": "edc2dc14d461e2d123b67a1bfc433666ab96e8bdf25fea733a47471b06be8799",
+    "original_predictions_sha256": "ae93599d713f340928d0819a90edcc3b79675084935990cc15548793e11fa04d",
+    "params": {},
+    "explanation": {
+      "window_points": 10,
+      "repeats": 3,
+      "permutation_seed": 20261008,
+      "source_result_sha256": "63f9d54417f54bba2fd311343a523d0b3f371c695b955807aecd84f25a80a561"
+    }
+  },
+  {
+    "element": "Cr",
+    "model": "tabpfn",
+    "file": "results/importance/Cr_tabpfn.npz",
+    "original_record_sha256": "6a4fca1fd0f911f72508c2b01c8360c4942ce42ef9775f4425657cac67a28c09",
+    "original_predictions_sha256": "ac1d1d6625d849cd36bf312d6d0937d02b7d1e147cb544188cd5e2be51c9d600",
+    "params": {},
+    "explanation": {
+      "window_points": 10,
+      "repeats": 3,
+      "permutation_seed": 20261008,
+      "source_result_sha256": "832d1b0f94ca1bf2e8be5ab90fe7d8badd825e3ab07f34dc03813d00ea67a72a"
+    }
+  }
+]

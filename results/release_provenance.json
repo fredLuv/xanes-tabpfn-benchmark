@@ -1,0 +1,7 @@
+{
+  "source_commit": "b8ae1bc0e85d30bdcc60eb936897479bf07243db",
+  "export_scope": "Pointwise FEFF/post-edge benchmark only. Fresh release history. No source spectra, checkpoints, manuscript or correspondence. Row numbers refer to the archived split; they are not material identities. Original source hashes retained for provenance; compact prediction files have new hashes.",
+  "test_prediction_rows": 59637,
+  "successful_runs": 143,
+  "uncompleted_runs": 1
+}

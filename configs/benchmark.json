@@ -1,0 +1,1366 @@
+{
+  "version": 1,
+  "original_protocol_sha256": "4f7ea3e366001ce068588d60b9959168ee7cb90a15017d5614ad68d4eb4ce231",
+  "original_protocol_frozen_at": "2026-10-09T17:07:44.983346+00:00",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "features": "100 pointwise absorption values, FEFF/post-edge normalization",
+  "split": "Exact archived arrays: approximately 81/9/10 before coordination training oversampling; no repartitioning.",
+  "selection": "Reuse the completed validation-run configurations. No test-based tuning, runtime selection or train+validation refitting.",
+  "limits": {
+    "cpu_threads": 4,
+    "memory_bytes": 10000000000,
+    "seconds": 1800
+  },
+  "archive": {
+    "url": "https://data.matr.io/4/deployment/data/xanes_2019.zip",
+    "sha256": "d2d90d1ede802b4ef725ef25e7d19add046554502ddc52b4c635ef93fb50a561"
+  },
+  "checkpoint": {
+    "repo_id": "Prior-Labs/tabpfn_3_5",
+    "revision": "06bf2ba35c80a92a3b9abb436b99cf49e7a0365e",
+    "filename": "tabpfn-v3.5-20260909.safetensors",
+    "sha256": "ece4d67eadfea42eb0e610df5189bea60cb7f31073d81e9c7a019b76eacf0be3"
+  },
+  "cases": [
+    {
+      "element": "Ti",
+      "task": "coord",
+      "tabpfn_params": {
+        "device": "cpu",
+        "memory_saving_mode": true,
+        "inference_config": {
+          "MAX_CPU_SAMPLES": 100000
+        }
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Ti_coord_train_x.npy",
+          "sha256": "8e51c99e4c8ae14581dd7af6060edbe921896d9968dd59b7c4f2d9f96dee5b5b",
+          "shape": [
+            5514,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Ti_coord_train_y.npy",
+          "sha256": "5c43ad768802d43e93b9a19e9e8e38da99ba34bc557c3f38f24d8d27c8021197",
+          "shape": [
+            5514
+          ]
+        },
+        "valid_x": {
+          "filename": "Ti_coord_valid_x.npy",
+          "sha256": "4d7f57abb832b9709b08a62f4b65b2f6ae1e08ff6738dc6bd5b6d6b7ed3ea125",
+          "shape": [
+            424,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Ti_coord_valid_y.npy",
+          "sha256": "bc0902088223515a9caf706704b8e2dcbabb796cca5400f124813bf52da621a8",
+          "shape": [
+            424
+          ]
+        },
+        "test_x": {
+          "filename": "Ti_coord_test_x.npy",
+          "sha256": "dc624eb4095d4abda1d49b7f211218204433419e232e5d829c49792d0586bbe0",
+          "shape": [
+            471,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Ti_coord_test_y.npy",
+          "sha256": "663aad24481dcda7502f91042a81e3d9fb5d7741b646d2bb1048a3585a27e9ab",
+          "shape": [
+            471
+          ]
+        }
+      }
+    },
+    {
+      "element": "V",
+      "task": "coord",
+      "tabpfn_params": {
+        "device": "cpu",
+        "memory_saving_mode": true,
+        "inference_config": {
+          "MAX_CPU_SAMPLES": 100000
+        }
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "V_coord_train_x.npy",
+          "sha256": "7fbbb417e9a3c96d07e506d93ae89b11d15b8198e0d447521990bc9c574894f5",
+          "shape": [
+            6063,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "V_coord_train_y.npy",
+          "sha256": "8f8eb13a40cf31b7cd045a8683b7505b5851629582fb0d58bc2ff2eb3a8e69d6",
+          "shape": [
+            6063
+          ]
+        },
+        "valid_x": {
+          "filename": "V_coord_valid_x.npy",
+          "sha256": "2931c46d3087d4d4f2452c869a02a4e7d1490ee58f4befc00505463c37c34763",
+          "shape": [
+            618,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "V_coord_valid_y.npy",
+          "sha256": "925744f9715b91353216307e53f6d634fdabacd9544285f6a05b0a890aef92b9",
+          "shape": [
+            618
+          ]
+        },
+        "test_x": {
+          "filename": "V_coord_test_x.npy",
+          "sha256": "b42fce3983895e8a3e57f5829f4e415d642360e884c3c704bfaccfe509a29a9f",
+          "shape": [
+            687,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "V_coord_test_y.npy",
+          "sha256": "489c3e144572f3653eef840f5fdb2321362c188bb7ac18ad2ad84947d4d6ea8d",
+          "shape": [
+            687
+          ]
+        }
+      }
+    },
+    {
+      "element": "Cr",
+      "task": "coord",
+      "tabpfn_params": {
+        "device": "mps"
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Cr_coord_train_x.npy",
+          "sha256": "b329e55a9bb5552500d27f9e9db107b5330adc1d92ed9bb2860f3619916d3de4",
+          "shape": [
+            3213,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Cr_coord_train_y.npy",
+          "sha256": "9231d375445abb5125f26754c354c0a85700c8f28bf400e9d69cfe484e613795",
+          "shape": [
+            3213
+          ]
+        },
+        "valid_x": {
+          "filename": "Cr_coord_valid_x.npy",
+          "sha256": "435df7b65320a6891e016f855971038c85e781cb949aed4afaefe4817609a251",
+          "shape": [
+            211,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Cr_coord_valid_y.npy",
+          "sha256": "3f174aee87b2aa5f83ce59a72773d0924362d9310ac473e68f175519cf3b5f7d",
+          "shape": [
+            211
+          ]
+        },
+        "test_x": {
+          "filename": "Cr_coord_test_x.npy",
+          "sha256": "2d96e179ff0223a638e9b2573f97025dbd7567344ea57ff748efccda3bdfd1a4",
+          "shape": [
+            235,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Cr_coord_test_y.npy",
+          "sha256": "34bf5520e175e3f4a34cc39bf3fe77731303a0bc6d6aaba4cec73309d80579b4",
+          "shape": [
+            235
+          ]
+        }
+      }
+    },
+    {
+      "element": "Mn",
+      "task": "coord",
+      "tabpfn_params": {
+        "device": "cpu",
+        "memory_saving_mode": true,
+        "inference_config": {
+          "MAX_CPU_SAMPLES": 100000
+        }
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Mn_coord_train_x.npy",
+          "sha256": "1bc2f909a98209c5cdb5d0ebb7fd6a8f3386eded02bff4d8cf62ef7ba43da490",
+          "shape": [
+            9453,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Mn_coord_train_y.npy",
+          "sha256": "40a34e76a3acd4c3886ad3964e36758bab72d1ef6abb329ab38ad3fa007f9e03",
+          "shape": [
+            9453
+          ]
+        },
+        "valid_x": {
+          "filename": "Mn_coord_valid_x.npy",
+          "sha256": "156adb504b5a927b322f2207614d651ea72fe9d15a1280bab84f42ad56e12131",
+          "shape": [
+            703,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Mn_coord_valid_y.npy",
+          "sha256": "59335e83fcc3fb739b61da8efeee3f93a14f7cae814c4aec301acd7202715472",
+          "shape": [
+            703
+          ]
+        },
+        "test_x": {
+          "filename": "Mn_coord_test_x.npy",
+          "sha256": "455ebea7b8353b8742963454b2dea0773c30f4de49192a41835941a0a2b58b2c",
+          "shape": [
+            781,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Mn_coord_test_y.npy",
+          "sha256": "e8e2ecf730c6b5cc6ac26ff752ba73874c0ec469d7a66afc1652a02cefeb27f4",
+          "shape": [
+            781
+          ]
+        }
+      }
+    },
+    {
+      "element": "Fe",
+      "task": "coord",
+      "tabpfn_params": {
+        "device": "cpu",
+        "memory_saving_mode": true,
+        "inference_config": {
+          "MAX_CPU_SAMPLES": 100000
+        }
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Fe_coord_train_x.npy",
+          "sha256": "2f4fbd6840f81e4ec85644b275eafe94689fb2e9fdd88f1f96bc3c10c9167411",
+          "shape": [
+            7557,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Fe_coord_train_y.npy",
+          "sha256": "fa421acf8cccdb628aaeaf0f684a0b7af2a5fea502bb136125e1ec4959358e95",
+          "shape": [
+            7557
+          ]
+        },
+        "valid_x": {
+          "filename": "Fe_coord_valid_x.npy",
+          "sha256": "bd2c95f8f0f83c4b7300f5357961c45c47c7249e17c0198cfc38f2d44e1bce33",
+          "shape": [
+            601,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Fe_coord_valid_y.npy",
+          "sha256": "e60cd474adc7786bcc3ad18d8bc819ff19af31d7653274ee1352aba409f54b31",
+          "shape": [
+            601
+          ]
+        },
+        "test_x": {
+          "filename": "Fe_coord_test_x.npy",
+          "sha256": "6250dd84d08b12ac5fdee15582867c0ffb1059dcafa247f0a63ce5a86e6321e5",
+          "shape": [
+            668,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Fe_coord_test_y.npy",
+          "sha256": "a89586902623dfc179b2b829c7b0a66c6e50f85526a02d553cb14f44bff20b70",
+          "shape": [
+            668
+          ]
+        }
+      }
+    },
+    {
+      "element": "Co",
+      "task": "coord",
+      "tabpfn_params": {
+        "device": "cpu",
+        "memory_saving_mode": true,
+        "inference_config": {
+          "MAX_CPU_SAMPLES": 100000
+        }
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Co_coord_train_x.npy",
+          "sha256": "a1cbf3782bb2e0aa4ab4e3e543057839584d6854262e0ba4671488f67741dd52",
+          "shape": [
+            4512,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Co_coord_train_y.npy",
+          "sha256": "17db45e4962358b74f046b0f6d5d846af76cecc2ce2637eb1be68513efd59810",
+          "shape": [
+            4512
+          ]
+        },
+        "valid_x": {
+          "filename": "Co_coord_valid_x.npy",
+          "sha256": "b44bd1a5fba61d12dd54c208bd0973bc0628c573917a830cf905689169d25be5",
+          "shape": [
+            310,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Co_coord_valid_y.npy",
+          "sha256": "d11a4e8e0aa0e64a0fdb5a6cfbf8ce1150a9be040ca32e48120879c824e0003f",
+          "shape": [
+            310
+          ]
+        },
+        "test_x": {
+          "filename": "Co_coord_test_x.npy",
+          "sha256": "41a98fb184a1d30a070ca49535b7cd95b7e3db328a5054d86dfe1db73b536c2f",
+          "shape": [
+            344,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Co_coord_test_y.npy",
+          "sha256": "a30d012f9e9889e7220b67d844c366250d5e70cc4e4dd3498bc9d70c898febfb",
+          "shape": [
+            344
+          ]
+        }
+      }
+    },
+    {
+      "element": "Ni",
+      "task": "coord",
+      "tabpfn_params": {
+        "device": "cpu",
+        "memory_saving_mode": true,
+        "inference_config": {
+          "MAX_CPU_SAMPLES": 100000
+        }
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Ni_coord_train_x.npy",
+          "sha256": "475231b01239996c1c64352e7a61ab68a79969fbc00227f072ce72d109889b72",
+          "shape": [
+            5310,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Ni_coord_train_y.npy",
+          "sha256": "dbb2e60eeb2c2b07929604c5069c1a5e3662f811bdf1c970d3dd1b33a44cb637",
+          "shape": [
+            5310
+          ]
+        },
+        "valid_x": {
+          "filename": "Ni_coord_valid_x.npy",
+          "sha256": "aaa60e1b22152a1163eea20399644b8854a8026c86b71c1e118a7a0275354dd3",
+          "shape": [
+            303,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Ni_coord_valid_y.npy",
+          "sha256": "9e8a7c63730bbdc747b83c689a96057b242d126cef0bc4160831b16c0fe31eaf",
+          "shape": [
+            303
+          ]
+        },
+        "test_x": {
+          "filename": "Ni_coord_test_x.npy",
+          "sha256": "b1b23af0321263f62f28fd121fc6a18948371ffb03066873c857db3040e3102b",
+          "shape": [
+            337,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Ni_coord_test_y.npy",
+          "sha256": "fecd9ea72fd01b9f65bc7ed0e858c89e67f7e247604e5049340ebc9274b8230c",
+          "shape": [
+            337
+          ]
+        }
+      }
+    },
+    {
+      "element": "Cu",
+      "task": "coord",
+      "tabpfn_params": {
+        "device": "cpu",
+        "memory_saving_mode": true,
+        "inference_config": {
+          "MAX_CPU_SAMPLES": 100000
+        }
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Cu_coord_train_x.npy",
+          "sha256": "8ac5c44ca5f32d65bc64db99197d64d096f14db17f96aa47e4c8167842f7cfe2",
+          "shape": [
+            5502,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Cu_coord_train_y.npy",
+          "sha256": "2b3272eaa8c953c0271fb346f5cf2de5d6ef00d1f108c0208e07049337f9e3e4",
+          "shape": [
+            5502
+          ]
+        },
+        "valid_x": {
+          "filename": "Cu_coord_valid_x.npy",
+          "sha256": "3f2cb6b408516782eef4300a36bb784ff90dbab0c74167e40701b1b1b2825f31",
+          "shape": [
+            304,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Cu_coord_valid_y.npy",
+          "sha256": "073073ab1d8cf91604010a05e68a675eef9d56190f4adda1e6ca1434c4deb85c",
+          "shape": [
+            304
+          ]
+        },
+        "test_x": {
+          "filename": "Cu_coord_test_x.npy",
+          "sha256": "2a3fb05c8af245c8b2f50ea52b4686c265fc17fe29e65fb12d147ae1af0927b7",
+          "shape": [
+            338,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Cu_coord_test_y.npy",
+          "sha256": "178fcebe07a519a843d3a5e697e38c99108f7d268e6229cab2980195d40c713c",
+          "shape": [
+            338
+          ]
+        }
+      }
+    },
+    {
+      "element": "Ti",
+      "task": "bader",
+      "tabpfn_params": {
+        "device": "mps"
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Ti_bader_train_x.npy",
+          "sha256": "dd4e583aa6af33f880a40bbcd0f0b6a59f60a7058d71a2859a1a4c945b65e16d",
+          "shape": [
+            2592,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Ti_bader_train_y.npy",
+          "sha256": "4fb60ff755aec30c906a49a8993eefb4a66ef658548c828b236b33a43766d18f",
+          "shape": [
+            2592
+          ]
+        },
+        "valid_x": {
+          "filename": "Ti_bader_valid_x.npy",
+          "sha256": "85cb6ed59df8320de35a813ac4dc9fa651b558a179ed0bc048e96e126f2b51c7",
+          "shape": [
+            288,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Ti_bader_valid_y.npy",
+          "sha256": "58d36198b24c07b987b8174babd45029e8d8caec265d62acb1618a74b8be2bdf",
+          "shape": [
+            288
+          ]
+        },
+        "test_x": {
+          "filename": "Ti_bader_test_x.npy",
+          "sha256": "9a74043e126c986b6c23a4699b5796aa3e03d251c0f6474f92707ebd63497192",
+          "shape": [
+            321,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Ti_bader_test_y.npy",
+          "sha256": "5273974a2e0ca0e556c57ddebaef966be52680bb56180102c9542aebb634f5ed",
+          "shape": [
+            321
+          ]
+        }
+      }
+    },
+    {
+      "element": "V",
+      "task": "bader",
+      "tabpfn_params": {
+        "device": "mps"
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "V_bader_train_x.npy",
+          "sha256": "441a6d1119719916a7de3d1c9cf8ca5efa2c435c5568503549d58e27fff1ffd5",
+          "shape": [
+            3128,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "V_bader_train_y.npy",
+          "sha256": "30f3cfa0d4f297974590930b8f664ba05c22568d3641f824287fea0ad95c5529",
+          "shape": [
+            3128
+          ]
+        },
+        "valid_x": {
+          "filename": "V_bader_valid_x.npy",
+          "sha256": "a029594f5fb63270f47b44f092ea01a402cf8fea77315dccd7bfd6f5b9087c26",
+          "shape": [
+            348,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "V_bader_valid_y.npy",
+          "sha256": "668a09adc145e41b0ed27d4bf2b9bcd18c88bbd585de7aae144bc8945fe5ab13",
+          "shape": [
+            348
+          ]
+        },
+        "test_x": {
+          "filename": "V_bader_test_x.npy",
+          "sha256": "9a2331019eb0171cb45ebd6ee9d505a73164e74748243e5488dabc3880ec82c6",
+          "shape": [
+            387,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "V_bader_test_y.npy",
+          "sha256": "738e4e3f494f531cfcb6c98526e0ebf812d1de0a55f404ec87d1f49fae5d75ad",
+          "shape": [
+            387
+          ]
+        }
+      }
+    },
+    {
+      "element": "Cr",
+      "task": "bader",
+      "tabpfn_params": {
+        "device": "mps"
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Cr_bader_train_x.npy",
+          "sha256": "47dfceb5dcde365d61941f3bbb018b7c62a4552a4a6b8f83d7f2cdd845accae2",
+          "shape": [
+            1465,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Cr_bader_train_y.npy",
+          "sha256": "1acac11340583ae8667c8aa71e40fa721870b5fa633d14bb4d0cfe44f4543ce4",
+          "shape": [
+            1465
+          ]
+        },
+        "valid_x": {
+          "filename": "Cr_bader_valid_x.npy",
+          "sha256": "e32052aa8be22434ee63bc952ae0614e400c81bd084956f71a8484549afa05a4",
+          "shape": [
+            163,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Cr_bader_valid_y.npy",
+          "sha256": "abeda22a1f7e87b3dfd198933a9fac6f7c086aee0d7a98af33993017ef9b97e8",
+          "shape": [
+            163
+          ]
+        },
+        "test_x": {
+          "filename": "Cr_bader_test_x.npy",
+          "sha256": "508c8c4a99ebfbfe312d8df8184afd29e2c5ee4f35c5cf3111167c1f97770e2f",
+          "shape": [
+            181,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Cr_bader_test_y.npy",
+          "sha256": "222d1740777fff2eb73b524bf01165d841cc0d4e6145493046d493d2eeeb4876",
+          "shape": [
+            181
+          ]
+        }
+      }
+    },
+    {
+      "element": "Mn",
+      "task": "bader",
+      "tabpfn_params": {
+        "device": "mps"
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Mn_bader_train_x.npy",
+          "sha256": "1b6c2811027918846e1199f4d1a830b50c59b9606f910a6c4aa9bd1046d135ec",
+          "shape": [
+            3264,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Mn_bader_train_y.npy",
+          "sha256": "951fc08ffb892972ec28c48862301db5d0005877846c4cd317123a748a344098",
+          "shape": [
+            3264
+          ]
+        },
+        "valid_x": {
+          "filename": "Mn_bader_valid_x.npy",
+          "sha256": "5aebae31a9442588bea6e5b1d7dcd2c30ee900e8d8958bb3382583e85bf0b877",
+          "shape": [
+            363,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Mn_bader_valid_y.npy",
+          "sha256": "d57faa43ef1370ea41a1d3ff0660352bafdc7c0aa3974c46e2ff9b24359692f6",
+          "shape": [
+            363
+          ]
+        },
+        "test_x": {
+          "filename": "Mn_bader_test_x.npy",
+          "sha256": "bb40edbf8b9eeefc35ceda7fb71d72b3ae281715595dd4f8f6bf31bef85b13cd",
+          "shape": [
+            404,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Mn_bader_test_y.npy",
+          "sha256": "f27ec65933c582ab000f683055e1f6f40a5cdab6783260d6ebc3476072828cd2",
+          "shape": [
+            404
+          ]
+        }
+      }
+    },
+    {
+      "element": "Fe",
+      "task": "bader",
+      "tabpfn_params": {
+        "device": "mps"
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Fe_bader_train_x.npy",
+          "sha256": "91c734cd7f560e22db4abe5f5acbba30c2fa62aa250845571df8f0bad0080fc2",
+          "shape": [
+            3165,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Fe_bader_train_y.npy",
+          "sha256": "9e31b50352b7da7a04a00c140cc8f7855a3ef8276c44469b9a351a0169c12e4c",
+          "shape": [
+            3165
+          ]
+        },
+        "valid_x": {
+          "filename": "Fe_bader_valid_x.npy",
+          "sha256": "c790bb6d2319a9febf0887782e88551b28ccebc6ed7db3498bafcd535775884d",
+          "shape": [
+            352,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Fe_bader_valid_y.npy",
+          "sha256": "c27dee3406627ae20c7ff0e28eac59261fff554c10b02d8a0f35481f6cdf8f2d",
+          "shape": [
+            352
+          ]
+        },
+        "test_x": {
+          "filename": "Fe_bader_test_x.npy",
+          "sha256": "d38625febb4e6e2663827ed9e9a4b83ecf8737e48ca8b1aa5bbb78b0a1277d8c",
+          "shape": [
+            391,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Fe_bader_test_y.npy",
+          "sha256": "7fd4a0efc0aeb57c25678857fdf298c8c99b4e6de4c9330592e31d8a3a27fd81",
+          "shape": [
+            391
+          ]
+        }
+      }
+    },
+    {
+      "element": "Co",
+      "task": "bader",
+      "tabpfn_params": {
+        "device": "mps"
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Co_bader_train_x.npy",
+          "sha256": "992c52397bad0aa88cae8755f2ec9275a4ad69b72a5eb08d6e219881c20685c2",
+          "shape": [
+            1680,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Co_bader_train_y.npy",
+          "sha256": "ac352500c7ac1b74011875c1fc3c0a766873728b8bd7221fe26a258de2cf4e71",
+          "shape": [
+            1680
+          ]
+        },
+        "valid_x": {
+          "filename": "Co_bader_valid_x.npy",
+          "sha256": "0209055e3af304cc5943fcb3477e3b4b511436badb9f1265cee68ad3b4466c68",
+          "shape": [
+            187,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Co_bader_valid_y.npy",
+          "sha256": "c3da393be9c0a0a9306a112f367880e36de07c95283fd298c8062ec2a0dfc373",
+          "shape": [
+            187
+          ]
+        },
+        "test_x": {
+          "filename": "Co_bader_test_x.npy",
+          "sha256": "059b5cb4172991d1ad5ab97d574314627c7934a65b6595cbf39715beffa9231d",
+          "shape": [
+            208,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Co_bader_test_y.npy",
+          "sha256": "f96c5fd3aecd054aa1359d162de0c1b032a30e335549eebd08d2ff05c30e5b56",
+          "shape": [
+            208
+          ]
+        }
+      }
+    },
+    {
+      "element": "Ni",
+      "task": "bader",
+      "tabpfn_params": {
+        "device": "mps"
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Ni_bader_train_x.npy",
+          "sha256": "b667d4102234b0dbe7891d2671fb5d8c1688d06afd12afa45369c9c988e98958",
+          "shape": [
+            1800,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Ni_bader_train_y.npy",
+          "sha256": "b3969ca4baac24f5808c5c74a0b4a8c78d9c7f55af9b602925a0099e800a1f38",
+          "shape": [
+            1800
+          ]
+        },
+        "valid_x": {
+          "filename": "Ni_bader_valid_x.npy",
+          "sha256": "85a7ecd14efc93b02c154e4a3f83865be02acc3532e5fc395eb6da82699d06a6",
+          "shape": [
+            201,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Ni_bader_valid_y.npy",
+          "sha256": "34395ecb213b6b6bac17fe40b93cc7495820a1d1822fe21e15e1b19645c9f30f",
+          "shape": [
+            201
+          ]
+        },
+        "test_x": {
+          "filename": "Ni_bader_test_x.npy",
+          "sha256": "c95a4f88e6a12be0431a2a369c920c0e2ae1e1988ae3664f0503df329e107223",
+          "shape": [
+            223,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Ni_bader_test_y.npy",
+          "sha256": "18c5b9adf86ff942f1f0000440971b8f939789748216bc4e25b40fa9fbb7661a",
+          "shape": [
+            223
+          ]
+        }
+      }
+    },
+    {
+      "element": "Cu",
+      "task": "bader",
+      "tabpfn_params": {
+        "device": "mps"
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Cu_bader_train_x.npy",
+          "sha256": "7030f9e4731aabd5427e9373e657b46fa897d875d5486b109b8778dd980f99ea",
+          "shape": [
+            1755,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Cu_bader_train_y.npy",
+          "sha256": "2fd5bbaaa80861c3b90e97864671add1f69b7c8f05e28406e2e0a94d7abce82f",
+          "shape": [
+            1755
+          ]
+        },
+        "valid_x": {
+          "filename": "Cu_bader_valid_x.npy",
+          "sha256": "3ef52b5f8472de283bc7b10dd8da227b2e564bea67bab73adffcb6d0bbfe6b8d",
+          "shape": [
+            195,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Cu_bader_valid_y.npy",
+          "sha256": "ab25ea858bf2383bd6847c41191226ec338d1b2c9c0a2a29130b168eb95f1089",
+          "shape": [
+            195
+          ]
+        },
+        "test_x": {
+          "filename": "Cu_bader_test_x.npy",
+          "sha256": "a6c3bdd0db131e45b6771ab709a463094068386b2c63e2e7599bcd8a1d1fcbc1",
+          "shape": [
+            217,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Cu_bader_test_y.npy",
+          "sha256": "6ba08ac0d3898c02e42d61f2745388d9610b1c07f8fa99777cc6fbf4e0475c73",
+          "shape": [
+            217
+          ]
+        }
+      }
+    },
+    {
+      "element": "Ti",
+      "task": "md",
+      "tabpfn_params": {
+        "device": "mps"
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Ti_md_train_x.npy",
+          "sha256": "b8bb57aef21ca10025356b68be24e272f2805e4cba528a3d08153e72b458c50f",
+          "shape": [
+            3814,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Ti_md_train_y.npy",
+          "sha256": "c47f049dc4896e406eede9dadfb08e6faf012b07b9f3ad3aa455b24da7756d5a",
+          "shape": [
+            3814
+          ]
+        },
+        "valid_x": {
+          "filename": "Ti_md_valid_x.npy",
+          "sha256": "4d7f57abb832b9709b08a62f4b65b2f6ae1e08ff6738dc6bd5b6d6b7ed3ea125",
+          "shape": [
+            424,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Ti_md_valid_y.npy",
+          "sha256": "679b76b3378393429621e059a7f8d13492a6f1b8ef51f750624ffb5f7e4cf2df",
+          "shape": [
+            424
+          ]
+        },
+        "test_x": {
+          "filename": "Ti_md_test_x.npy",
+          "sha256": "dc624eb4095d4abda1d49b7f211218204433419e232e5d829c49792d0586bbe0",
+          "shape": [
+            471,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Ti_md_test_y.npy",
+          "sha256": "7688ac5e26f12066c04634ddb045be2df20356c9cd0acc4eede64011136dd63a",
+          "shape": [
+            471
+          ]
+        }
+      }
+    },
+    {
+      "element": "V",
+      "task": "md",
+      "tabpfn_params": {
+        "device": "cpu",
+        "memory_saving_mode": true,
+        "inference_config": {
+          "MAX_CPU_SAMPLES": 100000
+        }
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "V_md_train_x.npy",
+          "sha256": "22a3fd3577802882f6f7cd5ae49cbece1b957fe7be3db6a895cdfe70589be0fb",
+          "shape": [
+            5557,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "V_md_train_y.npy",
+          "sha256": "ff620fa1d046e251b56a3792b7ace51752996a801a3ba4e5231b6218fb1d0ec6",
+          "shape": [
+            5557
+          ]
+        },
+        "valid_x": {
+          "filename": "V_md_valid_x.npy",
+          "sha256": "2931c46d3087d4d4f2452c869a02a4e7d1490ee58f4befc00505463c37c34763",
+          "shape": [
+            618,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "V_md_valid_y.npy",
+          "sha256": "ee572958b08d0e1ebffb0c5108b888fbb094a7009d137533f82df5c90d1b02cb",
+          "shape": [
+            618
+          ]
+        },
+        "test_x": {
+          "filename": "V_md_test_x.npy",
+          "sha256": "b42fce3983895e8a3e57f5829f4e415d642360e884c3c704bfaccfe509a29a9f",
+          "shape": [
+            687,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "V_md_test_y.npy",
+          "sha256": "a452339dfdaf85140d0d8e2ef10a3177e92d85ae4349f010216f0299f5c95f0f",
+          "shape": [
+            687
+          ]
+        }
+      }
+    },
+    {
+      "element": "Cr",
+      "task": "md",
+      "tabpfn_params": {
+        "device": "mps"
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Cr_md_train_x.npy",
+          "sha256": "e01939c0f69a87d324f147c25b186ec31bb4fc43e6aad28739af7a6ec68cd17f",
+          "shape": [
+            1896,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Cr_md_train_y.npy",
+          "sha256": "eba0095b3c8abc7186e237ea35217bc95f4c4613481c8695d532caa9ba4c0407",
+          "shape": [
+            1896
+          ]
+        },
+        "valid_x": {
+          "filename": "Cr_md_valid_x.npy",
+          "sha256": "435df7b65320a6891e016f855971038c85e781cb949aed4afaefe4817609a251",
+          "shape": [
+            211,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Cr_md_valid_y.npy",
+          "sha256": "3a4c4baad540776611969fd1a717b6d269f62e1403fd6a104dbcf74bdb67e871",
+          "shape": [
+            211
+          ]
+        },
+        "test_x": {
+          "filename": "Cr_md_test_x.npy",
+          "sha256": "2d96e179ff0223a638e9b2573f97025dbd7567344ea57ff748efccda3bdfd1a4",
+          "shape": [
+            235,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Cr_md_test_y.npy",
+          "sha256": "13808b6277c46a2a8f0ce8134e7f008fd09d37a299e3e35432a721467f7e11c2",
+          "shape": [
+            235
+          ]
+        }
+      }
+    },
+    {
+      "element": "Mn",
+      "task": "md",
+      "tabpfn_params": {
+        "device": "cpu",
+        "memory_saving_mode": true,
+        "inference_config": {
+          "MAX_CPU_SAMPLES": 100000
+        }
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Mn_md_train_x.npy",
+          "sha256": "6d15a67ed501af64fdcd4f3f85cc4e8c5d19fb83aad489b9cc8712a635b57b69",
+          "shape": [
+            6326,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Mn_md_train_y.npy",
+          "sha256": "7008fcf887dc22169828ef825de96247295ef2a05b96b9f20214fcaef288282c",
+          "shape": [
+            6326
+          ]
+        },
+        "valid_x": {
+          "filename": "Mn_md_valid_x.npy",
+          "sha256": "156adb504b5a927b322f2207614d651ea72fe9d15a1280bab84f42ad56e12131",
+          "shape": [
+            703,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Mn_md_valid_y.npy",
+          "sha256": "31e749035bcc56e708acd62f0eb482b6b39ea8472fd12dd5a11ce2b745369e98",
+          "shape": [
+            703
+          ]
+        },
+        "test_x": {
+          "filename": "Mn_md_test_x.npy",
+          "sha256": "455ebea7b8353b8742963454b2dea0773c30f4de49192a41835941a0a2b58b2c",
+          "shape": [
+            781,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Mn_md_test_y.npy",
+          "sha256": "261459b66e9bdb86a39c75676fbd551cec845d76efbaf51e5508ed5369f8e7d2",
+          "shape": [
+            781
+          ]
+        }
+      }
+    },
+    {
+      "element": "Fe",
+      "task": "md",
+      "tabpfn_params": {
+        "device": "cpu",
+        "memory_saving_mode": true,
+        "inference_config": {
+          "MAX_CPU_SAMPLES": 100000
+        }
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Fe_md_train_x.npy",
+          "sha256": "ebfa9124783d0a854ffc16b4c7abbf14856db8b66e0d4aa0deda47e8cc8f7891",
+          "shape": [
+            5404,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Fe_md_train_y.npy",
+          "sha256": "2d9a675885e84ef1cd27582fa96f679889e2cff336f15a4f7a9a9a8be127737b",
+          "shape": [
+            5404
+          ]
+        },
+        "valid_x": {
+          "filename": "Fe_md_valid_x.npy",
+          "sha256": "bd2c95f8f0f83c4b7300f5357961c45c47c7249e17c0198cfc38f2d44e1bce33",
+          "shape": [
+            601,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Fe_md_valid_y.npy",
+          "sha256": "7cc8cb9f264f9198c4fdf5e63af061013727683140d1183215389298816031fb",
+          "shape": [
+            601
+          ]
+        },
+        "test_x": {
+          "filename": "Fe_md_test_x.npy",
+          "sha256": "6250dd84d08b12ac5fdee15582867c0ffb1059dcafa247f0a63ce5a86e6321e5",
+          "shape": [
+            668,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Fe_md_test_y.npy",
+          "sha256": "f5c71874f3ec6078f6a6429201de670c86d10e741a4a7373d5fa5372fb81c2b4",
+          "shape": [
+            668
+          ]
+        }
+      }
+    },
+    {
+      "element": "Co",
+      "task": "md",
+      "tabpfn_params": {
+        "device": "mps"
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Co_md_train_x.npy",
+          "sha256": "10fa0385e7b623800ea5d79fa6374a1a58043b1af5e51fadb122d5c0c4249fb5",
+          "shape": [
+            2782,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Co_md_train_y.npy",
+          "sha256": "d24dc0aa3fe03dd8ad4cada46311708fef0fa95637ec635839af089574d36dbe",
+          "shape": [
+            2782
+          ]
+        },
+        "valid_x": {
+          "filename": "Co_md_valid_x.npy",
+          "sha256": "b44bd1a5fba61d12dd54c208bd0973bc0628c573917a830cf905689169d25be5",
+          "shape": [
+            310,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Co_md_valid_y.npy",
+          "sha256": "f807b49cec24cebc020abe98bb4e3862b21d7ef9626dbe7f4c8756b82c045d8f",
+          "shape": [
+            310
+          ]
+        },
+        "test_x": {
+          "filename": "Co_md_test_x.npy",
+          "sha256": "41a98fb184a1d30a070ca49535b7cd95b7e3db328a5054d86dfe1db73b536c2f",
+          "shape": [
+            344,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Co_md_test_y.npy",
+          "sha256": "bd95a2568f3a6cc1454891813befaee199d01332a4791c9d6f6b36cbdfa0ba74",
+          "shape": [
+            344
+          ]
+        }
+      }
+    },
+    {
+      "element": "Ni",
+      "task": "md",
+      "tabpfn_params": {
+        "device": "mps"
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Ni_md_train_x.npy",
+          "sha256": "62a8fd1f34fd31fe534891ef184aafd8b4c29d1571d3e6cc69f86aa95c1c9b50",
+          "shape": [
+            2721,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Ni_md_train_y.npy",
+          "sha256": "fc8aeafe198d8ff018c14a495be477a7325802754b6ec2060032b6ef6799d783",
+          "shape": [
+            2721
+          ]
+        },
+        "valid_x": {
+          "filename": "Ni_md_valid_x.npy",
+          "sha256": "aaa60e1b22152a1163eea20399644b8854a8026c86b71c1e118a7a0275354dd3",
+          "shape": [
+            303,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Ni_md_valid_y.npy",
+          "sha256": "17df1e8355e3073060f44dbeb874dca78ae874c1b6c99c061d11fcefd2b18527",
+          "shape": [
+            303
+          ]
+        },
+        "test_x": {
+          "filename": "Ni_md_test_x.npy",
+          "sha256": "b1b23af0321263f62f28fd121fc6a18948371ffb03066873c857db3040e3102b",
+          "shape": [
+            337,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Ni_md_test_y.npy",
+          "sha256": "1a97e79cabc8f38f8ee1b1dbc9ac749a6320cdb4df9e397bcfdd797880dfedb1",
+          "shape": [
+            337
+          ]
+        }
+      }
+    },
+    {
+      "element": "Cu",
+      "task": "md",
+      "tabpfn_params": {
+        "device": "mps"
+      },
+      "arrays": {
+        "train_x": {
+          "filename": "Cu_md_train_x.npy",
+          "sha256": "9716c11e0cf8c5b54e29d5bc12f89beb272858f5ff2cfc6def40dce37321b8df",
+          "shape": [
+            2734,
+            100
+          ]
+        },
+        "train_y": {
+          "filename": "Cu_md_train_y.npy",
+          "sha256": "2abd80af1d58333093218afdc49a3389111da2cd12a6233070d433912006fc0f",
+          "shape": [
+            2734
+          ]
+        },
+        "valid_x": {
+          "filename": "Cu_md_valid_x.npy",
+          "sha256": "3f2cb6b408516782eef4300a36bb784ff90dbab0c74167e40701b1b1b2825f31",
+          "shape": [
+            304,
+            100
+          ]
+        },
+        "valid_y": {
+          "filename": "Cu_md_valid_y.npy",
+          "sha256": "4ffb7f3d1c35452d78cd6c8a6f71e78cc835537a2c3f16b1889e518e4326003d",
+          "shape": [
+            304
+          ]
+        },
+        "test_x": {
+          "filename": "Cu_md_test_x.npy",
+          "sha256": "2a3fb05c8af245c8b2f50ea52b4686c265fc17fe29e65fb12d147ae1af0927b7",
+          "shape": [
+            338,
+            100
+          ]
+        },
+        "test_y": {
+          "filename": "Cu_md_test_y.npy",
+          "sha256": "3d4e72adc8beaf2a464b7aef86e2a58b6d9e1ff658949c35011bad0b6cf39fb6",
+          "shape": [
+            338
+          ]
+        }
+      }
+    }
+  ]
+}

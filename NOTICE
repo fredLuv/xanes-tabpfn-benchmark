@@ -1,0 +1,12 @@
+XANES TabPFN Benchmark
+Curated by Feiyu Lu, 2026.
+
+The dataset, feature preparation and Random Forest configuration originate from
+Torrisi et al., npj Computational Materials (2020), DOI 10.1038/s41524-020-00376-6.
+The model construction follows TRI-AMDD/TRIXS (Apache License 2.0) and the
+experiment implementation in this project's private development repository.
+The authors of TRIXS and Prior Labs do not endorse this comparison.
+
+Code in this release is licensed under Apache License 2.0. Third-party data,
+software and model weights retain their respective licenses. Raw data and
+model weights are not redistributed. Obtain them from the original providers.

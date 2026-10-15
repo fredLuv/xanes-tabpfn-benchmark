@@ -1,0 +1,62 @@
+# Can a transformer beat random forests on X-ray data?
+
+**Standard TabPFN 3.5 versus the published random-forest baseline on the TRIXS XANES benchmark.** Code, executed notebook, saved predictions and figures for an exploratory comparison across eight transition-metal elements.
+
+[**Read the notebook**](notebooks/01_benchmark_results.ipynb) · [**LinkedIn article**](https://www.linkedin.com/pulse/can-transformer-beat-random-forests-x-ray-data-feiyu-lu-xekec/) · [**Reproduce the analysis**](docs/REPRODUCIBILITY.md)
+
+## Findings
+
+On the authors' archived test split, using matched model seeds:
+
+| Target | TabPFN versus fixed RF |
+|---|---|
+| Average neighbor distance | MAE lower for all eight elements, by **31.6–47.1%** |
+| Calculated partial charge (Bader charge) | MAE lower for all eight elements, by **13.1–37.8%** |
+| Number of neighbors (coordination) | Macro-F1 higher in **six of seven** complete three-seed comparisons; Ti essentially unchanged |
+
+Vanadium coordination has two matched seeds; the third TabPFN seed exceeded the memory limit. It is shown descriptively and excluded from the seven-case count. CN = 4 F1 decreased for Ti and Mn, despite higher overall accuracy. Improvements are relative to the published RF configuration on **one archived split**, not a claim of superiority over tuned tree models or on unseen materials.
+
+![Held-out prediction performance](figures/figure_02_test_performance.png)
+
+## Which spectral regions matter?
+
+We shuffle one contiguous energy region across validation spectra and measure the **decrease in macro-F1**, using the same permutations for RF and TabPFN. For Ti, V, Cr and Mn, both models' largest observed effects occur below the most common absorption-maximum energy. Useful predictive information extends beyond that maximum.
+
+![Eight-element regional importance comparison](figures/figure_01_coordination_comparison.png)
+
+**Importance rankings are preliminary:** Cr uses three shuffles; the other seven elements use one matched shuffle. A 1,000-resample check of saved validation predictions shows some rankings are sensitive to which spectra are evaluated. It does not replace repeated donor shuffles. These are measures of model sensitivity, not transformer weights or causal physical explanations.
+
+## Start here
+
+| Artifact | Contents |
+|---|---|
+| [Executed notebook](notebooks/01_benchmark_results.ipynb) | Performance, all eight importance maps, conditional stability and regression parity |
+| [Methods and limitations](docs/METHODS.md) | Inputs, splits, model settings, interpretation and minimum follow-up |
+| [Reproducibility](docs/REPRODUCIBILITY.md) | Offline checks, environments, optional model reruns and provenance |
+| [Results](results/) | Individual predictions, run records, importance predictions and checksums |
+| [Figures](figures/) | PNG and vector SVG versions of four figures |
+| [Experiment configuration](configs/benchmark.json) | Input hashes, frozen settings and checkpoint revision |
+
+Python 3.11 is recommended. To verify the saved evidence without weights or raw spectra:
+
+```sh
+python3.11 -m venv .venv-report
+.venv-report/bin/pip install -r environments/report.txt
+.venv-report/bin/python -m xanes_benchmark verify
+.venv-report/bin/python -m xanes_benchmark report
+.venv-report/bin/python -m xanes_benchmark.stability
+```
+
+The report notebook reads bundled predictions and runs without network access. Full inference is optional and requires the original archive and separately obtained model weights. The recorded experiments ran on an M4 Mac with 16 GB memory, four CPU workers and Apple MPS where recorded, with 10 GB / 30-minute limits per job. See the reproducibility guide before running a case.
+
+## Sources and attribution
+
+- [Torrisi et al. (2020), original XANES study](https://www.nature.com/articles/s41524-020-00376-6)
+- [Authors' dataset archive](https://data.matr.io/4/)
+- [TRI-AMDD/TRIXS source code](https://github.com/TRI-AMDD/trixs)
+- [TabPFN 3.5](https://priorlabs.ai/tabpfn-3-5) and [implementation](https://github.com/PriorLabs/TabPFN)
+- [Permutation importance methodology](https://scikit-learn.org/stable/modules/permutation_importance.html)
+
+Exploration and research direction by Feiyu Lu, prompted by a suggestion from Yang Ha. GPT-6 assisted with implementation, execution, analysis and artifact preparation under Feiyu's direction. This is a personal project, without institutional endorsement.
+
+Code is licensed under [Apache 2.0](LICENSE); see [NOTICE](NOTICE) for attribution. Third-party datasets and pretrained weights retain their own terms and are not redistributed. This repository contains the public computational companion only.
