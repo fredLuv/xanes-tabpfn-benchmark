@@ -2,11 +2,11 @@
 
 **Standard TabPFN 3.5 versus the published random-forest baseline on the TRIXS XANES benchmark.** Code, executed notebook, saved predictions and figures for an exploratory comparison across eight transition-metal elements.
 
-[**Read the notebook**](notebooks/01_benchmark_results.ipynb) · [**LinkedIn article**](https://www.linkedin.com/pulse/can-transformer-beat-random-forests-x-ray-data-feiyu-lu-xekec/) · [**Reproduce the analysis**](docs/REPRODUCIBILITY.md)
+[**Read the notebook**](notebooks/01_benchmark_results.ipynb) · [**Reproduce the results**](docs/REPRODUCIBILITY.md) · [**View the code**](xanes_benchmark/) · [**LinkedIn article**](https://www.linkedin.com/pulse/can-transformer-beat-random-forests-x-ray-data-feiyu-lu-xekec/)
 
-## Run it yourself
+## Quick start: reproduce the analysis
 
-**The Python code is in [`xanes_benchmark/`](xanes_benchmark/); JSON files record frozen settings and evidence.** The [step-by-step guide](docs/REPRODUCIBILITY.md) covers both regenerating the analysis and rerunning the actual models.
+Recalculate the reported metrics and rebuild all four figures from the released predictions. This route needs **Python 3.11**, with no model weights or raw-data download.
 
 ```sh
 git clone https://github.com/fredLuv/xanes-tabpfn-benchmark.git
@@ -17,11 +17,15 @@ python3.11 -m venv .venv-report
 .venv-report/bin/python scripts/execute_notebook.py
 ```
 
-This rebuilds every chart from individual saved predictions and executes the notebook. No weights or raw-data download are needed for this route.
+Open the executed [results notebook](notebooks/01_benchmark_results.ipynb) to inspect the tables and regenerated charts.
 
-**To regenerate predictions:** follow [data → RF → TabPFN → importance](docs/REPRODUCIBILITY.md#route-b--reproduce-model-predictions-from-the-authors-inputs). The runnable [full-suite script](scripts/reproduce.py) covers all eight elements. [Model and importance code](xanes_benchmark/inference.py) uses the exact archived splits and donor orders; [figure code](xanes_benchmark/figures.py) turns predictions into the four charts.
+## Run RF and TabPFN yourself
 
-Original archive → verified arrays → training context / RF fit → held-out predictions + validation permutations → metrics → figures → notebook.
+To regenerate predictions from the original training and held-out data, follow [data → RF → TabPFN → importance](docs/REPRODUCIBILITY.md#route-b--reproduce-model-predictions-from-the-authors-inputs). The runnable [full-suite script](scripts/reproduce.py) covers all eight elements. [Model and importance code](xanes_benchmark/inference.py) uses the exact archived splits and donor orders; [figure code](xanes_benchmark/figures.py) turns predictions into the four charts.
+
+The guide covers the original archive, separate pinned environments, TabPFN checkpoint access, model fitting and inference, and regional permutation importance. Full model reruns require the data and weights; some recorded TabPFN cases require Apple MPS.
+
+**Data to result:** original archive → verified arrays → RF fit / TabPFN training context → test predictions + validation permutations → metrics → figures → notebook.
 
 ## Findings
 
@@ -45,7 +49,7 @@ We shuffle one contiguous energy region across validation spectra and measure th
 
 **Importance rankings are preliminary:** Cr uses three shuffles; the other seven elements use one matched shuffle. A 1,000-resample check of saved validation predictions shows some rankings are sensitive to which spectra are evaluated. It does not replace repeated donor shuffles. These are measures of model sensitivity, not transformer weights or causal physical explanations.
 
-## Start here
+## Repository map
 
 | Artifact | Contents |
 |---|---|
